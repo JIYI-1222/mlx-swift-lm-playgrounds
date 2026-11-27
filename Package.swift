@@ -36,11 +36,11 @@ let package = Package(
             targets: ["IntegrationTestHelpers"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/ml-explore/mlx-swift", .upToNextMinor(from: "0.31.4")),
+        .package(url: "https://github.com/ml-explore/mlx-swift", exact: "0.31.4"),
         // 602.0.0 floor: swift.org publishes signed prebuilt swift-syntax artifacts only for
         // >= 602 tags on current toolchains; a 600.x/601.x resolution falls back to the full
         // source compile of swift-syntax.
-        .package(url: "https://github.com/swiftlang/swift-syntax.git", "602.0.0" ..< "604.0.0"),
+        .package(url: "https://github.com/swiftlang/swift-syntax.git", exact: "602.0.0"),
     ],
     targets: [
         .target(
@@ -152,10 +152,3 @@ let package = Package(
     ]
 )
 
-if Context.environment["MLX_SWIFT_BUILD_DOC"] == "1"
-    || Context.environment["SPI_GENERATE_DOCS"] == "1"
-{
-    package.dependencies.append(
-        .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.3.0")
-    )
-}
