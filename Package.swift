@@ -26,9 +26,6 @@ let package = Package(
             name: "MLXEmbedders",
             targets: ["MLXEmbedders"]),
         .library(
-            name: "MLXHuggingFace",
-            targets: ["MLXHuggingFace"]),
-        .library(
             name: "BenchmarkHelpers",
             targets: ["BenchmarkHelpers"]),
         .library(
@@ -132,22 +129,6 @@ let package = Package(
                 "README.md"
             ],
             resources: [.process("Resources/1080p_30.mov"), .process("Resources/audio_only.mov")]
-        ),
-        .macro(
-            name: "MLXHuggingFaceMacros",
-            dependencies: [
-                .product(name: "SwiftSyntaxMacros", package: "swift-syntax"),
-                .product(name: "SwiftCompilerPlugin", package: "swift-syntax"),
-            ],
-            path: "Libraries/MLXHuggingFaceMacros"
-        ),
-        .target(
-            name: "MLXHuggingFace",
-            dependencies: [
-                "MLXHuggingFaceMacros",
-                "MLXLMCommon",
-            ],
-            path: "Libraries/MLXHuggingFace"
         ),
     ]
 )
